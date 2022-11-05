@@ -1,0 +1,14 @@
+.castList {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1400px;
+  margin-top: 50px;
+}
+
+.castListItem {
+  margin-bottom: 15px;
+  margin-right: 25px;
+  list-style: none;
+  flex-direction: column;
+}

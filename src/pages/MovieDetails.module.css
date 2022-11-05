@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  margin-left: 50px;
+}
+.description {
+  margin-left: 30px;
+  width: 800px;
+  flex-direction: column;
+}
+
+.btnGoBack,
+.infoListItem {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+  transition: color 250ms;
+}
+
+.btnGoBack:hover {
+  color: rgb(201, 103, 103);
+}
+.title {
+  margin-left: 50px;
+}
+
+.info {
+  font-size: 20px;
+}
+
+.infoListItem {
+  list-style: none;
+  margin-top: 10px;
+}

@@ -1,0 +1,9 @@
+.moviesItem {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.moviesList {
+  margin-left: 50px;
+  padding: 0;
+}
