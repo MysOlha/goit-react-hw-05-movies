@@ -18,7 +18,8 @@
 
 .headerLink.active {
   color: white;
-  background-color: orangered;
+  background-color: rgb(223, 51, 51);
+  border-radius: 4px;
 }
 
 .headerLink:hover {
