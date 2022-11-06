@@ -1,36 +1,45 @@
-import SearchBox from 'components/SearchBox/SearchBox';
-import { useState, useEffect } from 'react';
-import MoviesList from 'components/MoviesList/MoviesList';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { searchMovies } from 'services/api';
+import SearchBox from 'components/SearchBox/SearchBox';
+import MoviesList from 'components/MoviesList/MoviesList';
+import Loader from 'components/Loader/Loader';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  // const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const name = searchParams.get('name') ?? '';
+  const query = searchParams.get('query') ?? '';
   const location = useLocation();
-  // console.log(location);
 
   useEffect(() => {
     if (query === '') {
       return;
     }
+    setLoading(true);
     searchMovies(query)
       .then(res => setMovies(res))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false));
   }, [query]);
 
   const onSearch = query => {
-    setSearchParams({ query });
-    setQuery(query);
+    setSearchParams(query !== '' ? { query } : {});
+    // setQuery(query);
     setMovies(movies);
   };
 
   return (
     <>
-      <SearchBox onSubmit={onSearch} value={name} />
-      <MoviesList movies={movies} state={{ from: location }} />
+      <SearchBox onSubmit={onSearch} value={query} />
+      {movies.length !== 0 && !loading && (
+        <MoviesList movies={movies} state={{ from: location }} />
+      )}
+      {movies.length === 0 && !loading && (
+        <h3 style={{ marginLeft: 50 }}>No movies for showing...</h3>
+      )}
+      {loading && <Loader />}
     </>
   );
 };

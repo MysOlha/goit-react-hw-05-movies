@@ -16,6 +16,11 @@
   text-decoration: none;
 }
 
+.headerLink.active {
+  color: white;
+  background-color: orangered;
+}
+
 .headerLink:hover {
   color: rgb(223, 51, 51);
 }

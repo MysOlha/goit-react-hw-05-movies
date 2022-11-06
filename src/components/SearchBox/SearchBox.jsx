@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import css from './SearchBox.module.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const SearchBox = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
@@ -12,7 +14,7 @@ const SearchBox = ({ onSubmit }) => {
   const onFormSubmit = evt => {
     evt.preventDefault();
     if (query.trim() === '') {
-      alert('Empty string');
+      toast.error('Empty string');
       return;
     }
     onSubmit(query);
