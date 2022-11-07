@@ -11,7 +11,7 @@ const MovieDetails = () => {
 
   const backToList = location.state?.from ?? '/';
 
-  // console.log(location.state);
+  console.log(location.state);
 
   useEffect(() => {
     getMovieById(id)
@@ -64,10 +64,14 @@ const MovieDetails = () => {
       <h2 className={css.title}>Additional information:</h2>
       <ul className={css.infoList}>
         <li className={css.infoListItem}>
-          <Link to="cast">Casts</Link>
+          <Link to="cast" state={{ from: backToList }}>
+            Casts
+          </Link>
         </li>
         <li className={css.infoListItem}>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: backToList }}>
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />
